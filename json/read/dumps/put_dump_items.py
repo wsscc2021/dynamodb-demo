@@ -1,19 +1,28 @@
 import pandas
 import boto3
+import asyncio
 
 # it can change value for your custom dataset
 SOURCE_CSV_FILE="tcc_ceds_music.csv"
 DYNAMODB_TABLE_NAME="Musics"
 
-def main():
+async def main():
+    # will store coroutines to this variable
+    coroutines = list()
+    # boto3 client connections
+    client = [ boto3.client('dynamodb') for n in range(1,11) ]
     with open(SOURCE_CSV_FILE, newline='') as file:
         reader = pandas.read_csv(file, chunksize=25)
+        n = 0 # client connection number
         for df in reader:
             # data frame parse and transform to dynamodb batch_write_item request format
             requests = df_transform_to_dynamodb_batch_write_items_put(df)
             # dynamodb batch_write_item api call
-            dynamodb_batch_write_item(requests)
-            
+            coroutines.append( dynamodb_batch_write_item(requests, client[n]))
+            # client connection number
+            n = n+1 if n < 9 else 0
+    # wait for result async coroutines
+    await asyncio.gather(*coroutines)
 
 def df_transform_to_dynamodb_batch_write_items_put(df: pandas.DataFrame) -> list:
     # data frame parse and transform to dynamodb batch_write_item request format
@@ -50,9 +59,8 @@ def df_transform_to_dynamodb_batch_write_items_delete(df: pandas.DataFrame) -> l
         for csv_item in df.to_dict('records')
     ]
 
-def dynamodb_batch_write_item(requests):
+async def dynamodb_batch_write_item(requests, client):
     try:
-        client = boto3.client('dynamodb')
         response = client.batch_write_item(
             RequestItems={
                 DYNAMODB_TABLE_NAME: requests
@@ -70,7 +78,7 @@ if __name__ == "__main__":
     while True:
         confirm = input("Are you sure you want create dynamodb table and items (y/n)? ")
         if confirm == 'y':
-            main()
+            asyncio.run(main())
             print("Done!")
             exit(0)
         elif confirm == 'n':
