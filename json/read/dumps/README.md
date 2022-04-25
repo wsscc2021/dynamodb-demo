@@ -1,5 +1,5 @@
 
-It make a dump items for practices about read operations.
+It make dump items for practices about read operations.
 
 # Quick Start
 
