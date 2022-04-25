@@ -1,0 +1,20 @@
+{
+    "AlbumList": [
+        {
+            "DeleteRequest": {
+                "Key": {
+                    "Album": {"S": "Dark & Wild"},
+                    "Artist": {"S": "BTS"}
+                }
+            }
+        },
+        {
+            "DeleteRequest": {
+                "Key": {
+                    "Album": {"S": "Love Yourself: Tear"},
+                    "Artist": {"S": "BTS"}
+                }
+            }
+        }
+    ]
+}

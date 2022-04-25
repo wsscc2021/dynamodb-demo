@@ -1,0 +1,54 @@
+{
+    "AlbumList" : [ 
+        {
+            "PutRequest": { 
+                "Item": { 
+                    "Album": {"S": "Dark & Wild"},
+                    "Artist": {"S": "BTS"},
+                    "TrackList": {
+                        "SS": [
+                            "Danger",
+                            "War of Hormone",
+                            "Hip Hop Lover",
+                            "Let Me Know",
+                            "Rain",
+                            "Blanket Kick"
+                        ]
+                    },
+                    "Sales": {
+                        "M": {
+                            "Value": {"N": "576309"},
+                            "Unit": {"S": "WON"}
+                        }
+                    },
+                    "Released": {"S": "20140819"}
+                }
+            }
+        },
+        { 
+            "PutRequest": { 
+                "Item": { 
+                    "Album" : { "S": "Love Yourself: Tear" },
+                    "Artist": { "S": "BTS" },
+                    "TrackList": {
+                        "SS": [
+                            "Fake Love",
+                            "The Truth Untold",
+                            "134340",
+                            "Paradise",
+                            "Love Maze",
+                            "Magic Shop"
+                        ]
+                    },
+                    "Sales": {
+                        "M": {
+                            "Value": {"N": "2924104"},
+                            "Unit": {"S": "WON"}
+                        }
+                    },
+                    "Released": {"S": "20180518"}
+                }
+            }
+        }
+    ]
+}

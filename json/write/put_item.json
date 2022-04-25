@@ -1,0 +1,21 @@
+{
+    "Album": {"S": "Dark & Wild"},
+    "Artist": {"S": "BTS"},
+    "TrackList": {
+        "SS": [
+            "Danger",
+            "War of Hormone",
+            "Hip Hop Lover",
+            "Let Me Know",
+            "Rain",
+            "Blanket Kick"
+        ]
+    },
+    "Sales": {
+        "M": {
+            "Value": {"N": "576309"},
+            "Unit": {"S": "WON"}
+        }
+    },
+    "Released": {"S": "20140819"}
+}
