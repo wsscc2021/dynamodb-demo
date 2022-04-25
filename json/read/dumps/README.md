@@ -7,7 +7,7 @@ It make dump items for practices about read operations.
     - Table Name : *Musics*
     - Partition Key : *artist_name*
     - Sort Key : *track_name*
-    - Provisioned write capcity unit : *50*
+    - On-demand
 
 2. Download source
     ```
