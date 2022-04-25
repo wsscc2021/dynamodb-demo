@@ -28,7 +28,7 @@
                 ":artist": {"S": "bts"}
             }'
         ```
-    - response
+    - response (it performed full-scanned)
         ```
         {
             ...
@@ -62,7 +62,7 @@
                 ":artist": {"S": "bts"}
             }'
         ```
-    - response
+    - response (it scanned only partitioned dataset)
         ```
         {
             ...
